@@ -35,7 +35,7 @@ button {
   font: inherit;
   cursor: pointer;
   color: #fff;
-  padding: 14px;
+  padding: 14px 28px;
   font-size: 18px;
 }
 </style>

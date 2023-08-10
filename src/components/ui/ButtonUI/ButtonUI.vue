@@ -35,7 +35,7 @@ button {
   background-color: transparent;
   cursor: pointer;
   color: #01A7FD;
-  padding: 14px;
+  padding: 7px 28px;
   font-size: 18px;
 }
 </style>

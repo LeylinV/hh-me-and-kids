@@ -15,6 +15,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 *{
@@ -29,7 +32,9 @@
   line-height: normal;
 }
 .page{
-  max-width: 800px;
+  flex: 1;
+  width: 900px;
+  margin: 0 auto;
 }
 
 </style>
