@@ -1,27 +1,43 @@
 <template>
-  <div>
-    <h2>Превью:</h2>
-    <p>ФИО: {{ fullName }}</p>
-    <p>Возраст: {{ age }}</p>
-    <h2>Дети:</h2>
-    <div v-for="(child, index) in children" :key="index">
-      <p>{{ index + 1 }}. Имя: {{ child.name }}, Возраст: {{ child.age }}</p>
+    <div>
+        <TitiledBlockUI title="Персональные данные">
+            <p>{{ formattedPersonal }} </p>
+        </TitiledBlockUI>
+        <TitiledBlockUI title="Дети">
+            <div class="child" v-for="(child, index) in formattedChildren" :key="index">
+                <p class="child-text">{{child}}</p>
+            </div>
+        </TitiledBlockUI>
     </div>
-  </div>
 </template>
 
 <script>
+import TitiledBlockUI from "@/components/ui/TitledBlockUI/TitiledBlockUI";
+import {mapGetters} from 'vuex'
 export default {
-  computed: {
-    fullName() {
-      return this.$store.state.fullName;
-    },
-    age() {
-      return this.$store.state.age;
-    },
-    children() {
-      return this.$store.state.children;
+    components: {TitiledBlockUI},
+    computed: {
+        ...mapGetters({
+            formattedChildren: "formattedChildren",
+            formattedPersonal: 'formattedPersonal'
+        })
     }
-  }
 };
 </script>
+<style>
+.child{
+    text-align: start;
+}
+.child-text{
+    display: inline-block;
+    background: #F1F1F1;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 15px 25px;
+}
+p{
+    text-align: start;
+    font-weight: 700;
+    font-size: 22px;
+}
+</style>

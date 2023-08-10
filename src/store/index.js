@@ -1,4 +1,5 @@
-import { createStore } from 'vuex';
+import {createStore} from 'vuex';
+import {getPersonalData} from "@/lib/getPersonalData";
 
 export default createStore({
     state: {
@@ -13,18 +14,16 @@ export default createStore({
         setAge(state, age) {
             state.age = age;
         },
-        addChild(state, child) {
-            state.children.push(child);
+        setChildren(state, children) {
+            state.children = children.filter(child => child.name !== '');
         },
-        removeChild(state, index) {
-            state.children.splice(index, 1);
-        }
     },
-    actions: {
-        addNewChild({ commit, state }) {
-            if (state.children.length < 5) {
-                commit('addChild', { name: '', age: null });
-            }
+    getters: {
+        formattedChildren: state => {
+            return state.children.map(child => getPersonalData(child.name, child.age))
+        },
+        formattedPersonal: state =>{
+            return getPersonalData(state.fullName, state.age)
         }
     }
 });
